@@ -4,9 +4,9 @@
 <% @employee.tickets.each do |ticket| %>
   <h3><%= ticket.subject %></h3>
   <%= ticket.age %>
-  <% ticket.employees.unique.each do |connected| %>
-    <%= connected.name %>
-  <% end %>
+<% end %>
+<% @employee.unique_ticket_names.each do |connected| %>
+  <%= connected %>
 <% end %>
 
 <%= form_with url: "/employees/#{@employee.id}", method: :patch, data: { turbo: false } do |f| %>

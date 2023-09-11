@@ -8,7 +8,13 @@ class Employee < ApplicationRecord
     tickets << ticket
   end
 
-  def self.unique
-    employee = self.distinct
+  def unique_ticket_names
+    names_list = []
+    self.tickets.each do |ticket|
+      ticket.employees.each do |emp|
+        names_list << emp.name
+      end
+    end
+    names_list.uniq
   end
 end
