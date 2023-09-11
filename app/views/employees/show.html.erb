@@ -1,0 +1,17 @@
+<%= @employee.name %>
+<%= @employee.level %>
+
+<% @employee.tickets.each do |ticket| %>
+  <h3><%= ticket.subject %></h3>
+  <%= ticket.age %>
+  <% ticket.employees.unique.each do |connected| %>
+    <%= connected.name %>
+  <% end %>
+<% end %>
+
+<%= form_with url: "/employees/#{@employee.id}", method: :patch, data: { turbo: false } do |f| %>
+  <%= f.label :id %>
+  <%= f.text_field :id %>
+
+  <%= f.submit "Add Ticket" %>
+<% end %>
